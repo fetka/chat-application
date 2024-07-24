@@ -36,6 +36,21 @@ stompClient.subscribe("ws://localhost:8080/chat", function(message) {
             alert("Error " + message.body);
         });
   });
+    const socket = new WebSocket("ws://localhost:8080/chat");
+<!--    socket.onmessage = function(event) {-->
+<!--        let message = JSON.parse(event.data);-->
+<!--        displayMessage(event);-->
+<!--    };-->
+socket.onmessage =  (event) => {
+ console.log("onmessage", event.data);
+ let message = JSON.parse(event.data);
+        displayMessage(message);
+};
+
+socket.onopen = (event) => {
+console.log("onopen", event);
+};
+
 
     function sendMessage() {
         let messageContent = document.getElementById("message").value;

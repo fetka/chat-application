@@ -3,7 +3,6 @@ package com.example.chat_application.handler;
 import com.example.chat_application.model.ChatMessage;
 import com.example.chat_application.service.ChatService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
