@@ -10,7 +10,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
-  private final ChatWebSocketHandler chatWebSocketHandler;
+  public final ChatWebSocketHandler chatWebSocketHandler;
 
   public WebSocketConfig(ChatWebSocketHandler chatWebSocketHandler) {
     this.chatWebSocketHandler = chatWebSocketHandler;

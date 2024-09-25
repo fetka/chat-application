@@ -6,17 +6,14 @@
 <!--  <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>-->
 <!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
 <!--  <script src="./stomp.js"></script>-->
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+<!--  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>-->
   <script>
 
 
-    const stompClient = new StompJs.Client({
-    brokerURL: 'ws://localhost:8080/chat'
-});
+
     const socket = new WebSocket("ws://localhost:8080/chat");
 
-<!--  ws = stompClient.over(socket);-->
 
   socket.onmessage =  (event) => {
   console.log("onmessage", event.data);
@@ -26,30 +23,16 @@
 
   socket.onopen = (event) => {
   console.log("onopen", event);
+  console.log("protocol: ", socket.protocol);
+
+  let message = {
+            sender: "User",
+            content: "Here's some text that the server is urgently awaiting!"
+        };
+ socket.send(JSON.stringify(message));
   };
 
-  stompClient.onConnect({}, (frame) => {
-stompClient.subscribe("ws://localhost:8080/chat", function(message) {
-            alert("Error " + message.body);
-        });
-  socket.subscribe("/topic/public", function(message) {
-            alert("Error " + message.body);
-        });
-  });
-    const socket = new WebSocket("ws://localhost:8080/chat");
-<!--    socket.onmessage = function(event) {-->
-<!--        let message = JSON.parse(event.data);-->
-<!--        displayMessage(event);-->
-<!--    };-->
-socket.onmessage =  (event) => {
- console.log("onmessage", event.data);
- let message = JSON.parse(event.data);
-        displayMessage(message);
-};
 
-socket.onopen = (event) => {
-console.log("onopen", event);
-};
 
 
     function sendMessage() {

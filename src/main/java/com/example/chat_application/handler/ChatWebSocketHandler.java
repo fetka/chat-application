@@ -10,8 +10,8 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 @Component
 public class ChatWebSocketHandler extends TextWebSocketHandler {
-  private final ChatService chatService;
-  private final ObjectMapper objectMapper;
+  public final ChatService chatService;
+  public final ObjectMapper objectMapper;
 
   public ChatWebSocketHandler(ChatService chatService, ObjectMapper objectMapper) {
     this.chatService = chatService;
@@ -23,7 +23,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
     String payload = message.getPayload();
     ChatMessage chatMessage = objectMapper.readValue(payload, ChatMessage.class);
 
-    System.out.println("handleTextMessage: " + chatMessage);
+    System.out.println("ChatWebSocketHandler.handleTextMessage: " + chatMessage);
     chatService.sendMessage(chatMessage);
   }
 }

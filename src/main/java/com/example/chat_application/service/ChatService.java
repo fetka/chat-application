@@ -8,8 +8,8 @@ import reactor.core.publisher.FluxSink;
 
 @Service
 public class ChatService {
-  private final EmitterProcessor<ChatMessage> chatProcessor = EmitterProcessor.create();
-  private final FluxSink<ChatMessage> chatSink = chatProcessor.sink();
+  public final EmitterProcessor<ChatMessage> chatProcessor = EmitterProcessor.create();
+  public final FluxSink<ChatMessage> chatSink = chatProcessor.sink();
 
   public Flux<ChatMessage> getChatMessages() {
     return chatProcessor.publish().autoConnect();

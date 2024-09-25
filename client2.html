@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat Application</title>
+<!--  <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0-beta2/bundles/stomp.umd.min.js"></script>-->
+<!--  <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>-->
+<!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
+<!--  <script src="./stomp.js"></script>-->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+  <script>
+    let stomp = null;
+    // 'Connect' button click handler
+    function connect() {
+       stomp = webstomp.over(new SockJS('ws://localhost:8080/chat'));
+       stomp.connect({}, function (frame) {
+           stomp.subscribe('/app/subscribe', function (response) {
+               log(response);
+           });
+           const subscription = stomp.subscribe('/queue/responses', function (response) {
+               log(response);
+           });
+           stomp.subscribe('/queue/errors', function (response) {
+               log(response);
+               console.log('Client unsubscribes: ' + subscription);
+               subscription.unsubscribe({});
+           });
+           stomp.subscribe('/topic/periodic', function (response) {
+               log(response);
+           });
+       });
+    }
+    // 'Disconnect' button click handler
+    function disconnect() {
+       if (stomp !== null) {
+           stomp.disconnect(function() {
+               console.log("Client disconnected");
+           });
+           stomp = null;
+       }
+    }
+
+  </script>
+</head>
+<body>
+<h1>Chat Application</h1>
+<div id="messages"></div>
+<input type="text" id="message" placeholder="Enter your message">
+<button onclick="sendMessage()">Send</button>
+</body>
+</html>
