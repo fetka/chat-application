@@ -1,28 +1,33 @@
 package com.example.chat_application;
 
+import com.example.chat_application.example.MyNamespaceMapperByGemini;
 import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.PropertyException;
 import jakarta.xml.bind.Unmarshaller;
 import java.io.StringReader;
 
 public class UnmarshalExample {
-//  <?xml version='1.0' Encoding='UTF-8' ?>
+
+  //  <?xml version='1.0' Encoding='UTF-8' ?>
   static String xml = """
-    
-    <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
-          <n:name xmlns:n="http://mycompany.example.com/employees">Fred Bloggs</n:name>
-    </env:Envelope>
-    """;
+          
+      <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+            <n:name xmlns:n="http://mycompany.example.com/employees">Fred Bloggs</n:name>
+      </env:Envelope>
+      """;
 
   static String xmlH =
       """
-     <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
-        <env:Header>
-          <n:name xmlns:n="http://mycompany.example.com/employees">Fred Bloggs</n:name>
-         </env:Header> 
-    </env:Envelope>
-          """;
-  static String xmlString= """
-     
+           <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+              <env:Header>
+                <n:name xmlns:n="http://mycompany.example.com/employees">Fred Bloggs</n:name>
+               </env:Header> 
+          </env:Envelope>
+                """;
+  static String xmlString = """
+           
       <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
        <env:Header>
         <m:reservation xmlns:m="http://travelcompany.example.org/reservation"
@@ -54,7 +59,16 @@ public class UnmarshalExample {
        </env:Body>
       </env:Envelope>
       """;
+
   public static void main(String[] args) throws Exception {
+
+//    SOAPEnvelope soapEnvelope = marshaller();
+//    marshaller(soapEnvelope);
+
+    rootMarshaller();
+  }
+
+  public static SOAPEnvelope marshaller() throws JAXBException {
     JAXBContext jaxbContext = JAXBContext.newInstance(SOAPEnvelope.class);
     Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
@@ -64,7 +78,42 @@ public class UnmarshalExample {
     // Access the unmarshalled data from the envelope object
 //    System.out.println("Passenger name: " + envelope.getHeader().getPassenger().getName());
     System.out.println("Passenger name: " + envelope.getHeader().getPassenger().getName());
-    System.out.println("Departure.arriving: " + envelope.getBody().getItinerary().getDeparture().getArriving());
+    System.out.println(
+        "Departure.arriving: " + envelope.getBody().getItinerary().getDeparture().getArriving());
     // ...
+    return envelope;
+  }
+
+  public static void marshaller(SOAPEnvelope envelope) throws JAXBException {
+    JAXBContext ctx = JAXBContext.newInstance(SOAPEnvelope.class);
+    Marshaller m = ctx.createMarshaller();
+
+//    marshaller.marshal(envelope, new File("envelop.xml"));
+    m.marshal(envelope, System.out);
+  }
+
+  public static void rootMarshaller() throws JAXBException {
+    JAXBContext ctx = JAXBContext.newInstance(Root.class);
+
+    Root root = new Root();
+    root.setA("A");
+    root.setB("B");
+    root.setC("OTHER");
+
+    Marshaller m = ctx.createMarshaller();
+    m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+    try {
+//      m.setProperty("org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper", new MyNamespaceMapper());
+      m.setProperty("org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper", new MyNamespaceMapperByGemini());
+      //m.setProperty("com.sun.xml.bind.namespacePrefixMapper", new MyNamespaceMapper());
+    } catch (PropertyException e) {
+      // in case another JAXB implementation is used
+    }
+    m.marshal(root, System.out);
+
   }
 }
+
+
+

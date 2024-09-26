@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:Envelope xmlns="http://travelcompany.example.org/reservation"
+  xmlns:ns2="http://mycompany.example.com/employees"
+  xmlns:ns3="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:ns4="http://travelcompany.example.org/reservation/travel">
+  <ns3:Header>
+    <reservation>
+      <reference>uuid:093a2da1-q345-739r-ba5d-pqff98fe8j7d</reference>
+      <dateAndTime>2007-11-29T19:20:00+01:00</dateAndTime>
+    </reservation>
+    <ns2:passenger>
+      <ns2:name>Fred Bloggs</ns2:name>
+    </ns2:passenger>
+  </ns3:Header>
+  <ns3:Body>
+    <ns4:itinerary>
+      <ns4:departure>
+        <ns4:departing>New York</ns4:departing>
+        <ns4:arriving>Los Angeles</ns4:arriving>
+        <ns4:departureDate>2007-12-14T00:00:00+01:00</ns4:departureDate>
+        <ns4:departureTime>late afternoon</ns4:departureTime>
+        <ns4:seatPreference>aisle</ns4:seatPreference>
+      </ns4:departure>
+      <ns4:return>
+        <ns4:departing>Los Angeles</ns4:departing>
+        <ns4:arriving>New York</ns4:arriving>
+        <ns4:departureDate>2007-12-20T00:00:00+01:00</ns4:departureDate>
+        <ns4:departureTime>mid-morning</ns4:departureTime>
+        <ns4:seatPreference></ns4:seatPreference>
+      </ns4:return>
+    </ns4:itinerary>
+  </ns3:Body>
+</ns3:Envelope>
