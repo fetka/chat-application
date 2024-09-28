@@ -1,5 +1,6 @@
 package com.example.chat_application;
 
+import com.example.chat_application.xml.Itinerary;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;

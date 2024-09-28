@@ -1,5 +1,6 @@
 package com.example.chat_application;
 
+import com.example.chat_application.Address;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,7 @@
 package com.example.chat_application;
 
+import com.example.chat_application.xml.Passenger;
+import com.example.chat_application.xml.Reservation;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;

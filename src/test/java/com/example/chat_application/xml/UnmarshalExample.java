@@ -1,12 +1,15 @@
-package com.example.chat_application;
+package com.example.chat_application.xml;
 
+import com.example.chat_application.SOAPEnvelope;
 import com.example.chat_application.example.MyNamespaceMapperByGemini;
+import com.example.chat_application.xml.Root;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.PropertyException;
 import jakarta.xml.bind.Unmarshaller;
 import java.io.StringReader;
+import org.junit.jupiter.api.Test;
 
 public class UnmarshalExample {
 
@@ -60,13 +63,15 @@ public class UnmarshalExample {
       </env:Envelope>
       """;
 
-  public static void main(String[] args) throws Exception {
+  @Test
+  public void main() throws Exception {
 
-//    SOAPEnvelope soapEnvelope = marshaller();
-//    marshaller(soapEnvelope);
+    SOAPEnvelope soapEnvelope = marshaller();
+    marshaller(soapEnvelope);
 
-    rootMarshaller();
+//    rootMarshaller();
   }
+
 
   public static SOAPEnvelope marshaller() throws JAXBException {
     JAXBContext jaxbContext = JAXBContext.newInstance(SOAPEnvelope.class);
@@ -88,7 +93,9 @@ public class UnmarshalExample {
     JAXBContext ctx = JAXBContext.newInstance(SOAPEnvelope.class);
     Marshaller m = ctx.createMarshaller();
 
+
 //    marshaller.marshal(envelope, new File("envelop.xml"));
+    m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
     m.marshal(envelope, System.out);
   }
 
