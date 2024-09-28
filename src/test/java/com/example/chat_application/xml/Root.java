@@ -1,4 +1,4 @@
-package com.example.chat_application;
+package com.example.chat_application.xml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

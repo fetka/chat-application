@@ -9,7 +9,7 @@ public class MyNamespaceMapperByGemini extends NamespacePrefixMapper {
   private static final Map<String, String> prefixMap = new HashMap<>();
 
   static {
-    prefixMap.put("http://www.example.com/FOO", "foo");
+    prefixMap.put("http://www.example.com/FOO", "gemini");
     prefixMap.put("http://www.example.com/BAR", "bar");
     prefixMap.put("http://www.example.com/OTHER", "other");
   }

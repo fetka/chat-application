@@ -1,4 +1,4 @@
-package com.example.chat_application;
+package com.example.chat_application.xml;
 
 import org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper;
 

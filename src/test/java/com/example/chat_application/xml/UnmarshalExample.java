@@ -1,12 +1,20 @@
-package com.example.chat_application;
+package com.example.chat_application.xml;
 
+import com.example.chat_application.SOAPBody;
+import com.example.chat_application.SOAPEnvelope;
+import com.example.chat_application.SOAPHeader;
 import com.example.chat_application.example.MyNamespaceMapperByGemini;
+import com.example.chat_application.xml.Root;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.PropertyException;
 import jakarta.xml.bind.Unmarshaller;
 import java.io.StringReader;
+import org.junit.jupiter.api.Test;
 
 public class UnmarshalExample {
 
@@ -60,15 +68,17 @@ public class UnmarshalExample {
       </env:Envelope>
       """;
 
-  public static void main(String[] args) throws Exception {
+  @Test
+  public void main() throws Exception {
 
 //    SOAPEnvelope soapEnvelope = marshaller();
 //    marshaller(soapEnvelope);
-
-    rootMarshaller();
+    fromObjectToXml();
+//    rootMarshaller();
   }
 
-  public static SOAPEnvelope marshaller() throws JAXBException {
+
+  public SOAPEnvelope getEnvelop() throws JAXBException {
     JAXBContext jaxbContext = JAXBContext.newInstance(SOAPEnvelope.class);
     Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
@@ -84,15 +94,46 @@ public class UnmarshalExample {
     return envelope;
   }
 
-  public static void marshaller(SOAPEnvelope envelope) throws JAXBException {
+  @Test
+  public void marshaller()
+      throws JAXBException, JsonProcessingException {
+    SOAPEnvelope envelop = getEnvelop();
+
     JAXBContext ctx = JAXBContext.newInstance(SOAPEnvelope.class);
     Marshaller m = ctx.createMarshaller();
 
 //    marshaller.marshal(envelope, new File("envelop.xml"));
-    m.marshal(envelope, System.out);
+//    m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    m.marshal(envelop, System.out);
+    System.out.println("\n*** system.out end ***");
+
+
+    XmlMapper xmlMapper = new XmlMapper();
+    xmlMapper.configure(SerializationFeature.WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED, true);
+    String string = xmlMapper.writeValueAsString(envelop.toString());
+    System.out.println(string);
   }
 
-  public static void rootMarshaller() throws JAXBException {
+  @Test
+  public void fromObjectToXml() throws JsonProcessingException {
+    SOAPEnvelope soapEnvelope = new SOAPEnvelope();
+    SOAPBody soapBody = new SOAPBody();
+    soapBody.setItinerary(null);
+    soapEnvelope.setBody(soapBody);
+    SOAPHeader header = new SOAPHeader();
+    header.setPassenger(null);
+    header.setReservation(null);
+    soapEnvelope.setHeader(header);
+
+    System.out.println(soapEnvelope);
+    XmlMapper mapper = new XmlMapper();
+    String envelop = mapper.writeValueAsString(soapEnvelope);
+    System.out.println(envelop);
+
+  }
+
+  @Test
+  public void rootMarshaller() throws JAXBException {
     JAXBContext ctx = JAXBContext.newInstance(Root.class);
 
     Root root = new Root();
@@ -105,7 +146,8 @@ public class UnmarshalExample {
 
     try {
 //      m.setProperty("org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper", new MyNamespaceMapper());
-      m.setProperty("org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper", new MyNamespaceMapperByGemini());
+      m.setProperty("org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper",
+          new MyNamespaceMapperByGemini());
       //m.setProperty("com.sun.xml.bind.namespacePrefixMapper", new MyNamespaceMapper());
     } catch (PropertyException e) {
       // in case another JAXB implementation is used
