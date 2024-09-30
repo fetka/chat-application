@@ -7,7 +7,9 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import lombok.ToString;
 
+@ToString
 @XmlRootElement(name = "Header", namespace = "http://www.w3.org/2003/05/soap-envelope")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SOAPHeader implements Serializable {

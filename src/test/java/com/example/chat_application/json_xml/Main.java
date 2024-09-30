@@ -27,13 +27,18 @@ public class Main {
 
   public static final String RESET = "\033[0m";
   public static final String CYAN = "\033[0;36m";
+  public static final String RED = "\033[0;31m";
+  public static final String GREEN = "\033[0;32m";
+  public static final String YELLOW = "\033[0;33m";
+
+
   @BeforeEach
   public void setup() {
     xmlMapper = new XmlMapper();
-    xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+//    xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
     mapper = new ObjectMapper();
-    mapper.enable(SerializationFeature.INDENT_OUTPUT);
+//    mapper.enable(SerializationFeature.INDENT_OUTPUT);
   }
 
   @Test
@@ -41,10 +46,17 @@ public class Main {
     System.out.println("*** marshalling test ****");
 
     Person person = new Person("John", "Doe");
+    mapper.configure(
+        com.fasterxml.jackson.databind.SerializationFeature.WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED,
+        true);
 
-    String json = xmlMapper.writeValueAsString(person);
-    System.out.println(CYAN + json + RESET);
+    String xml = xmlMapper.writeValueAsString(person);
+    System.out.println(CYAN + xml + RESET);
     System.out.println("*** end of marshalling ****\n");
+
+    String json = mapper.writeValueAsString(person);
+    System.out.println(RED + json + RESET);
+
   }
 
   @Test
@@ -68,7 +80,7 @@ public class Main {
   }
 
   @Test
-  public void unmarshallingFromXML() throws JsonProcessingException{
+  public void unmarshallingFromXML() throws JsonProcessingException {
     System.out.println("*** unmarshallingFromXML tests ***");
     Person person = xmlMapper.readValue(xml, Person.class);
     String s = mapper.writeValueAsString(person);

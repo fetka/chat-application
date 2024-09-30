@@ -34,11 +34,11 @@ public class Person {
   @JacksonXmlProperty(localName = "first_name")
   private String firstName;
 
+  @JacksonXmlProperty(localName = "last_name")
   /* specifies that the lastName field should be mapped to an XML element named "lastName" */
   @XmlElement(name = "lastName")
   /* specific to JAXB2-JSON, indicates that the JSON property name should be "last_name"
    * instead of the default "lastName". This allows you to customize the JSON output. */
-  @JacksonXmlProperty(localName = "last_name")
   private String lastName;
 
   // Getters and setters
