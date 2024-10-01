@@ -51,7 +51,7 @@ public class TaskEnvelope {
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class ReplyTo {
 
-      @XmlElement(name = "Address")
+      @XmlElement(name = "Address", namespace = "http://schemas.xmlsoap.org/ws/2004/08/addressing")
       private String address;
     }
   }
