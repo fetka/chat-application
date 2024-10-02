@@ -5,7 +5,9 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import java.awt.SystemTray;
 import java.io.StringReader;
+import java.io.StringWriter;
 import org.junit.jupiter.api.Test;
 
 public class TaskMarshaller {
@@ -82,6 +84,18 @@ public class TaskMarshaller {
         .getGetAuthenticationAgentRecordsResult().getAuthenticationAgentRecord()
         .setServerContextId("44444444444444");
     System.out.println(envelope.getBody());
+
+    JAXBContext jaxbContext2 = JAXBContext.newInstance(TaskAuthEnvelope.class);
+    Marshaller marshaller = jaxbContext2.createMarshaller();
+    System.out.println("********************************");
+//    marshaller.marshal(envelope, System.out);
+
+    // Marshal the object to a String
+    StringWriter stringWriter = new StringWriter();
+    marshaller.marshal(envelope, stringWriter);
+    String xmlString = stringWriter.toString().replace("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>", "");
+
+    System.out.println(xmlString);
 
   }
 
