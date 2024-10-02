@@ -2,10 +2,8 @@ package com.example.chat_application.task;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAnyElement;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @XmlRootElement(name = "Envelope", namespace = "http://www.w3.org/2003/05/soap-envelope")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class TaskEnvelope {
+public class TaskAccessoryEnvelope {
 
   @XmlElement(name = "Header", required = true, namespace = "http://www.w3.org/2003/05/soap-envelope")
   private Header header;
