@@ -9,6 +9,8 @@
 //        @XmlNs(prefix = "xsd", namespaceURI = "http://www.w3.org/2001/XMLSchema"),
 //        @XmlNs(prefix = "a", namespaceURI = "http://schemas.xmlsoap.org/ws/2004/08/addressing")
 
+
+//        ns2="http://www.hp.com/schemas/imaging/OXPd/service/authentication/2013/03/01
     }
 )
 package com.example.chat_application.task;
