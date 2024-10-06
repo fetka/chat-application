@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<S:Envelope xmlns:S="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+  <env:Header>
+    <Action xmlns="http://schemas.xmlsoap.org/ws/2004/08/addressing" env:mustUnderstand="true">
+      http://www.hp.com/schemas/imaging/OXPd/service/authentication/2013/03/01/IAuthenticationService/RegisterAuthenticationAgent
+    </Action>
+    <MessageID xmlns="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+      uuid:b0f8c271-3235-4c7e-adbf-48caa7cc8425
+    </MessageID>
+    <ReplyTo xmlns="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+      <Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</Address>
+    </ReplyTo>
+    <To xmlns="http://schemas.xmlsoap.org/ws/2004/08/addressing" env:mustUnderstand="true">
+      https://70.215.190.20:7627/hp/device/webservices/OXPd/AuthenticationService
+    </To>
+  </env:Header>
+  <S:Body xmlns="http://www.hp.com/schemas/imaging/OXPd/common/2010/04/14"
+    xmlns:ns2="http://www.hp.com/schemas/imaging/OXPd/service/authentication/2013/03/01">
+    <ns2:RegisterAuthenticationAgent>
+      <ns2:authenticationAgentRecord>
+        <ns2:id>9941eaac-0c3e-4b52-b394-f93a3a734174</ns2:id>
+        <ns2:name>Printix</ns2:name>
+        <ns2:localizedName>
+          <LocalizedString>
+            <code>en-US</code>
+            <value>Printix</value>
+          </LocalizedString>
+        </ns2:localizedName>
+        <ns2:localizedDescription>
+          <LocalizedString>
+            <code>en-US</code>
+            <value>Printix Authentication Agent</value>
+          </LocalizedString>
+        </ns2:localizedDescription>
+        <ns2:authenticationAgent>
+          <uri>
+            https://on-device-api.dev03.printix.dev/ws/oxpd/jackson/tenants/9e7e155d-4c0e-4197-bb36-b9be373ad593/devices/b6bd854b-ddd0-4a56-b471-1c1a9bbb41d0/preprompt
+          </uri>
+          <binding>Soap12</binding>
+          <networkCredentials>
+            <userName>b6bd854b-ddd0-4a56-b471-1c1a9bbb41d0</userName>
+            <password>MYa9QRv1ysfJqVcjZgtRDNfgS0wxOp6hsTUQ6eXB4hA8OvlAdlLRaUmX</password>
+          </networkCredentials>
+          <connectionTimeout>60</connectionTimeout>
+          <responseTimeout>60</responseTimeout>
+        </ns2:authenticationAgent>
+        <ns2:enablePrePromptCheck>true</ns2:enablePrePromptCheck>
+        <ns2:userPromptTarget>
+          <webApplication xmlns="http://www.hp.com/schemas/imaging/OXPd/common/2010/04/14">
+            <uri>
+              https://on-device-api.dev03.printix.dev/ws/oxpd/jackson/tenants/9e7e155d-4c0e-4197-bb36-b9be373ad593/devices/b6bd854b-ddd0-4a56-b471-1c1a9bbb41d0/signin/index.html
+            </uri>
+            <binding>Plain</binding>
+            <networkCredentials>
+              <userName>b6bd854b-ddd0-4a56-b471-1c1a9bbb41d0</userName>
+              <password>MYa9QRv1ysfJqVcjZgtRDNfgS0wxOp6hsTUQ6eXB4hA8OvlAdlLRaUmX</password>
+            </networkCredentials>
+          </webApplication>
+        </ns2:userPromptTarget>
+        <ns2:enableSignoutNotification>true</ns2:enableSignoutNotification>
+        <ns2:signoutNotificationMaxRetries>3</ns2:signoutNotificationMaxRetries>
+        <ns2:signoutNotificationRetryInterval>3</ns2:signoutNotificationRetryInterval>
+        <ns2:serverContextId>56bc1aa2-0beb-4e43-86e4-af1ef5f6e612</ns2:serverContextId>
+      </ns2:authenticationAgentRecord>
+    </ns2:RegisterAuthenticationAgent>
+  </S:Body>
+</S:Envelope>

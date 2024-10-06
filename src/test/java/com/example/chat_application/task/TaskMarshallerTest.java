@@ -5,12 +5,11 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import java.awt.SystemTray;
 import java.io.StringReader;
 import java.io.StringWriter;
 import org.junit.jupiter.api.Test;
 
-public class TaskMarshaller {
+public class TaskMarshallerTest {
 
   @Test
   public void unMarshaller() throws JAXBException {

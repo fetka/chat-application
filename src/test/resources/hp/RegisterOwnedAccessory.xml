@@ -1,0 +1,21 @@
+<RegisterOwnedAccessory
+  xmlns="http://www.hp.com/schemas/imaging/OXPd/service/accessories/2010/04/14"
+  xmlns:ns2="http://www.hp.com/schemas/imaging/OXPd/common/2010/04/14">
+  <ownedAccessoryRecord>
+    <vendorId>65535</vendorId>
+    <productId>53</productId>
+    <serverContextId>45851857-81ef-447b-a8f5-428418791b67</serverContextId>
+    <callback>
+      <ns2:uri>
+        https://on-device-api.dev03.printix.dev/ws/oxpd/jackson/tenants/9e7e155d-4c0e-4197-bb36-b9be373ad593/devices/e6a0c968-2668-42f9-a681-8eb7661a5a42/hid-event
+      </ns2:uri>
+      <ns2:binding>Soap12</ns2:binding>
+      <ns2:networkCredentials>
+        <ns2:userName>e6a0c968-2668-42f9-a681-8eb7661a5a42</ns2:userName>
+        <ns2:password>kuzeJz6Andh6BMGkpUh8c4yLxtieLJdFm5Ep5uJjYhEFGoN3fFJ2BcPY</ns2:password>
+      </ns2:networkCredentials>
+      <ns2:connectionTimeout>60</ns2:connectionTimeout>
+      <ns2:responseTimeout>30</ns2:responseTimeout>
+    </callback>
+  </ownedAccessoryRecord>
+</RegisterOwnedAccessory>

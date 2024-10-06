@@ -1,24 +1,20 @@
-package com.example.chat_application.task;
+package com.example.chat_application.stack.model;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @XmlRootElement(name = "callback")
 @XmlAccessorType(XmlAccessType.FIELD)
-@NoArgsConstructor
-@AllArgsConstructor
 @XmlType(name = "Callback", propOrder = {
     "uri",
     "binding",
-    "networkCredential",
-    "connectTimeout",
+    "networkCredentials",
+    "connectionTimeout",
     "responseTimeout"
 })
 public class Callback {
@@ -30,7 +26,7 @@ public class Callback {
   private String binding;
 
   @XmlElement(name = "networkCredentials", namespace = "http://www.hp.com/schemas/imaging/OXPd/common/2010/04/14")
-  private NetworkCredential networkCredentials;
+  private NetworkCredentials networkCredentials;
 
   @XmlElement(name = "connectionTimeout", namespace = "http://www.hp.com/schemas/imaging/OXPd/common/2010/04/14")
   private int connectionTimeout;
