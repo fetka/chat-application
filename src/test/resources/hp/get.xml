@@ -1,0 +1,24 @@
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+  <s:Header>
+    <a:Action>
+      http://www.hp.com/schemas/imaging/OXPd/service/authenticationagent/2013/03/01/IAuthenticationAgentService
+    </a:Action>
+    <a:MessageID>message</a:MessageID>
+    <a:ReplyTo>
+      <Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</Address>
+    </a:ReplyTo>
+    <a:To s:mustUnderstand="1">
+      valuee
+    </a:To>
+  </s:Header>
+  <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GetPrePromptResult
+      xmlns="http://www.hp.com/schemas/imaging/OXPd/service/authenticationagent/2013/03/01">
+      <authenticationContextId>XXXX</authenticationContextId>
+      <languageCode>en-US</languageCode>
+      <serverContextId>XXXX</serverContextId>
+    </GetPrePromptResult>
+  </s:Body>
+</s:Envelope>
