@@ -15,7 +15,7 @@
       <GetAuthenticationAgentRecordsResult>
         <AuthenticationAgentRecord>
           <id>9941eaac-0c3e-4b52-b394-f93a3a734174</id>
-          <name>Printix</name>
+          <name>%s</name>
           <localizedName>
             <LocalizedString xmlns="http://www.hp.com/schemas/imaging/OXPd/common/2010/04/14">
               <code>en-US</code>
