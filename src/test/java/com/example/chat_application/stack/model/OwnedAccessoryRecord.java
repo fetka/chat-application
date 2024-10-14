@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
     "serverContextId",
     "callback"
 })
-public class OwnedAccessoryRecord {
+public class  OwnedAccessoryRecord {
 
   @XmlElement(name = "vendorId")
   private String vendorId;
