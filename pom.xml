@@ -67,6 +67,12 @@
       <version>2.11.1</version>
     </dependency>
 
+<!--    <dependency>-->
+<!--      <groupId>com.hp.OXPd</groupId>-->
+<!--      <artifactId>oxpd</artifactId>-->
+<!--      <version>1.8.2</version>-->
+<!--    </dependency>-->
+
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
       <artifactId>jakarta.xml.bind-api</artifactId>
