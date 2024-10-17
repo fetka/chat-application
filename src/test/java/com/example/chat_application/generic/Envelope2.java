@@ -56,20 +56,21 @@ public class Envelope2 {
   }
 
   @Data
-  @AllArgsConstructor
+//  @AllArgsConstructor
   @XmlAccessorType(XmlAccessType.FIELD) // Removed @XmlRootElement
   public static class Body<T> {
 
 //    @XmlElement
 //    private T object;
 
-    @XmlElement @XmlJavaTypeAdapter(GenericNameAdapter.class)
-//    @XmlElement
+
+    @XmlElement(type = JAXBElement.class)
+//    @XmlJavaTypeAdapter(GenericNameAdapter.class)
     private T object;
 
-//    public Body(T object) {
-//      this.object = new JAXBElement<>(new QName(object.getClass().getSimpleName()),  (Class<T>) object.getClass(), object).getValue();
-//    }
+    public Body(T object) {
+      this.object = (T) new JAXBElement<>(new QName("nameeeee"),  (Class<T>) object.getClass(), object);
+    }
   }
 }
 

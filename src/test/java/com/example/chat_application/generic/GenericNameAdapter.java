@@ -5,14 +5,16 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.namespace.QName;
 
-public class GenericNameAdapter<T> extends XmlAdapter<Object, Object> {
+public class GenericNameAdapter<T> extends XmlAdapter<T, Object> {
 
   @Override
-  public Object marshal(Object v) throws JAXBException {
+  public T marshal(Object v) throws JAXBException {
     // Determine element name based on object type
     String elementName = getXmlElementName(v.getClass());
-
-    return new JAXBElement<>(new QName(v.getClass().getSimpleName()),  (Class<Object>) v.getClass(), v);
+    System.out.print("element name:");
+    System.out.println(elementName);
+    return new JAXBElement<>(new QName(elementName),  (java.lang.Class<T>) v.getClass(),(T) v).getValue();
+//    return new JAXBElement<>(new QName(v.getClass().getSimpleName()),  (Class<Object>) v.getClass(), v);
   }
 
   @Override
@@ -27,6 +29,6 @@ public class GenericNameAdapter<T> extends XmlAdapter<Object, Object> {
 
     // Simple example:
     String className = clazz.getSimpleName();
-    return className.toLowerCase(); // Or apply other transformations as needed
+    return className; // Or apply other transformations as needed
   }
 }
