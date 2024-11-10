@@ -14,12 +14,12 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Class<?> clazz = ChatMessage.class;
-		clazz.getMethod("modifyContent");
-
-		ChatMessage chatMessage = new ChatMessage();
-		chatMessage.setContent("old msg.");
-		chatMessage.modifyContent();
-		System.out.println(chatMessage.getContent());
+//		Class<?> clazz = ChatMessage.class;
+//		clazz.getMethod("modifyContent");
+//
+//		ChatMessage chatMessage = new ChatMessage();
+//		chatMessage.setContent("old msg.");
+//		chatMessage.modifyContent();
+//		System.out.println(chatMessage.getContent());
 	}
 }

@@ -1,0 +1,22 @@
+---
+descriptors:
+  com.hp.www.schemas.imaging.OXPd.service.accessories.HidClose:
+    requestClass: "com.hp.www.schemas.imaging.OXPd.service.accessories.HidClose"
+    requestName: "HidClose"
+    requestAction: "http://www.hp.com/schemas/imaging/OXPd/service/accessories/2010/04/14/IAccessoriesService/HidClose"
+    serviceName: "AccessoriesService"
+  com.hp.www.schemas.imaging.OXPd.service.accessories.ResendOwnedAccessoryEvent:
+    requestClass: "com.hp.www.schemas.imaging.OXPd.service.accessories.ResendOwnedAccessoryEvent"
+    requestName: "ResendOwnedAccessoryEvent"
+    requestAction: "http://www.hp.com/schemas/imaging/OXPd/service/accessories/2010/04/14/IAccessoriesService/ResendOwnedAccessoryEvent"
+    serviceName: "AccessoriesService"
+  com.hp.www.schemas.imaging.OXPd.service.accessories.GetOwnedAccessoryRecords:
+    requestClass: "com.hp.www.schemas.imaging.OXPd.service.accessories.GetOwnedAccessoryRecords"
+    requestName: "GetOwnedAccessoryRecords"
+    requestAction: "http://www.hp.com/schemas/imaging/OXPd/service/accessories/2010/04/14/IAccessoriesService/GetOwnedAccessoryRecords"
+    serviceName: "AccessoriesService"
+  com.hp.www.schemas.imaging.OXPd.service.accessories.ReleaseSharedAccessoryContext:
+    requestClass: "com.hp.www.schemas.imaging.OXPd.service.accessories.ReleaseSharedAccessoryContext"
+    requestName: "ReleaseSharedAccessoryContext"
+    requestAction: "http://www.hp.com/schemas/imaging/OXPd/service/accessories/2010/04/14/IAccessoriesService/ReleaseSharedAccessoryContext"
+    serviceName: "AccessoriesService"

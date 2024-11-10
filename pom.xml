@@ -67,11 +67,11 @@
       <version>2.11.1</version>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>com.hp.OXPd</groupId>-->
-<!--      <artifactId>oxpd</artifactId>-->
-<!--      <version>1.8.2</version>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.hp.OXPd</groupId>-->
+    <!--      <artifactId>oxpd</artifactId>-->
+    <!--      <version>1.8.2</version>-->
+    <!--    </dependency>-->
 
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
@@ -93,6 +93,29 @@
       <artifactId>aspectjweaver</artifactId>
       <version>1.9.22.1</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.esotericsoftware.yamlbeans/yamlbeans -->
+    <dependency>
+      <groupId>com.esotericsoftware.yamlbeans</groupId>
+      <artifactId>yamlbeans</artifactId>
+      <version>1.17</version>
+    </dependency>
+
+
+    <!--    test  -->
+<!--    https://mvnrepository.com/artifact/org.mockito/mockito-core-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.mockito</groupId>-->
+    <!--      <artifactId>mockito-core</artifactId>-->
+    <!--      <version>5.14.2</version>-->
+    <!--      <scope>test</scope>-->
+    <!--    </dependency>-->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>5.11.0</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
